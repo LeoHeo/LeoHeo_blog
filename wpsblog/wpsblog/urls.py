@@ -13,9 +13,27 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+
+# MVC
+# M_Model: DB( Data ) & Business Logic
+# V_View: HTML, CSS, ... -> Templates/Client
+# C_Controller: View, Model ...
+
+# Model => 더 무겁게
+# Controller => 더 가볍게(즉, 기능이 Controller => Model...)
+
+# MVC
+# MVVM
+# MVW
 from django.conf.urls import url
 from django.contrib import admin
+from django.http import HttpResponse
+
+# MVC Controller
+def home(request):
+    return HttpResponse("hello world")
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$', home)
 ]
