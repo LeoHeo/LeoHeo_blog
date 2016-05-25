@@ -30,7 +30,7 @@ from django.contrib import admin
 from django.http import HttpResponse
 
 # MVC Controller
-from wpsblog.views import home, room, movies
+from wpsblog.views import home, room, movies, search
 
 
 urlpatterns = [
@@ -38,5 +38,6 @@ urlpatterns = [
     
     url(r'^$', home),
     url(r'^rooms/(?P<room_id>\d+)/$', room),
-    url(r'^movies/(?P<page>\d+)/(?P<per>\d+)', movies),
+    url(r'^movies/(?P<category>\w+)/(?P<page>\d+)/(?P<per>\d+)', movies),
+    url(r'^search/$', search)
 ]
