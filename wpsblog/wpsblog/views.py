@@ -2,17 +2,17 @@ import requests
 import json
 
 from django.http.response import HttpResponse
-from django.conf import settings
+from django.template import loader
+from django.shortcuts import render
 
-from wpsblog.renderer import render
 
 def home(request):
     return render(
-        "home",
-        {"site_name": "WPS Blog"}
+        request,
+        "home.html",
+        {"site_name": "wps blog"}
     )
     
-
 
 def room(request, room_id):
     url = "https://api.zigbang.com/v1/items?detail=true&item_ids="
@@ -59,6 +59,8 @@ def search(request):
     search = request.GET.get('search')
     url = "https://watcha.net/home/news.json?page=1&per=12"
     
+    template = loader.get_template("news.html")
+
     response = requests.get(url)
     news_list = json.loads(response.text).get('news')
 
@@ -67,24 +69,12 @@ def search(request):
             lambda news: search in news.get('title'),
             news_list,
         ))
-    
-    count = len(news_list) 
-    news_content = "".join([
-        "<h2><{title}</h2><img src={src}><p>{content}</p>".format(
-            title = news.get('title'),
-            src = news.get('image'),
-            content = news.get('content')
-        ) 
-        for news
-        in news_list
-    ])
-
+   
     return render(
-        "news",
-        {
-            "count": str(count),
-            "news_content": news_content
-        }
+        request,
+        "news.html",
+        {"news_list":news_list}
     )
+
 
 
