@@ -55,7 +55,7 @@ def movies(request, category, page, per):
     return HttpResponse("\n".join(select_elements_list))
 
 
-def search(request):
+def news(request):
     search = request.GET.get('search')
     url = "https://watcha.net/home/news.json?page=1&per=12"
     
