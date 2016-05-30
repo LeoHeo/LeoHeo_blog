@@ -36,8 +36,8 @@ from wpsblog.views import home, room, movies, news
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     
-    url(r'^$', home),
-    url(r'^rooms/(?P<room_id>\d+)/$', room),
-    url(r'^movies/(?P<category>\w+)/(?P<page>\d+)/(?P<per>\d+)', movies),
-    url(r'^news/$', news)
+    url(r'^$', home, name="home"),
+    url(r'^rooms/(?P<room_id>\d+)/$', room, name="rooms"),
+    url(r'^movies/(?P<category>\w+)/(?P<page>\d+)/(?P<per>\d+)', movies, name="movies"),
+    url(r'^watcha/$', news, name="news")
 ]

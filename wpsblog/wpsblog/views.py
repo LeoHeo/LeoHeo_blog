@@ -2,7 +2,6 @@ import requests
 import json
 
 from django.http.response import HttpResponse
-from django.template import loader
 from django.shortcuts import render
 
 
@@ -59,8 +58,6 @@ def news(request):
     search = request.GET.get('search')
     url = "https://watcha.net/home/news.json?page=1&per=12"
     
-    template = loader.get_template("news.html")
-
     response = requests.get(url)
     news_list = json.loads(response.text).get('news')
 
