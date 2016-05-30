@@ -2,24 +2,6 @@ import requests
 import json
 
 from django.http.response import HttpResponse
-from django.shortcuts import render
-
-
-def home(request):
-    return render(
-        request,
-        "home.html",
-        {"site_name": "wps blog"}
-    )
-    
-
-def room(request, room_id):
-    url = "https://api.zigbang.com/v1/items?detail=true&item_ids="
-    response = requests.get(url + room_id)
-    return HttpResponse(
-            response.content,
-            content_type = "application/json"
-    )
 
 
 def movies(request, category, page, per):
@@ -52,26 +34,3 @@ def movies(request, category, page, per):
         select_elements_list.append(select)
     
     return HttpResponse("\n".join(select_elements_list))
-
-
-def news(request):
-    search = request.GET.get('search')
-    url = "https://watcha.net/home/news.json?page=1&per=12"
-    
-    response = requests.get(url)
-    news_list = json.loads(response.text).get('news')
-
-    if search:
-        news_list = list(filter(
-            lambda news: search in news.get('title'),
-            news_list,
-        ))
-   
-    return render(
-        request,
-        "news.html",
-        {"news_list":news_list}
-    )
-
-
-
