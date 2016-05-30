@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+
 def terms(request):
     return render(
         request,
@@ -7,12 +8,14 @@ def terms(request):
         {}
     )
 
+
 def privacy(request):
     return render(
         request,
         "privacy.html",
         {}
     )
+
 
 def disclaimer(request):
     return render(

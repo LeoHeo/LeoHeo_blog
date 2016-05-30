@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'^news/$', news, name="news"),
     url(r'^about/us/$', about, name="about"),
 
-    url(r'^policy/',include("wpsblog.urls.policy", namespace="policy"))
+    url(r'^policy/', include("wpsblog.urls.policy", namespace="policy"))
 ]
 
 # 1. policy_urlpatterns 변수로
