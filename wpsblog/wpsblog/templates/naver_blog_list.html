@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}naver crawl list {% endblock %}
+
+{% block content %}
+    <ul>
+    {% for blog in blog_list %}
+        <li style="clear:both; list-style-type:none;">
+            <div style="float:left;">
+                <img src="{{ blog.thumbnail_image_url}}" />
+            </div>
+            <dl>
+                <dt><a href="{{ blog.original_url }}">{{ blog.title }}</a></dt>
+                <dd>{{ blog.content }}</dd?
+            </dl>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

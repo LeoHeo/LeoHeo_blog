@@ -7,3 +7,4 @@ from .policy import terms
 from .policy import privacy
 from .policy import disclaimer
 from .posts import *
+from .naver_blog_crawler import naver_blog_crawler
