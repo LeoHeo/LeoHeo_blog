@@ -5,6 +5,7 @@ from django.db import models
 
 
 class NaverPost(models.Model):
+    keyword = models.TextField()
     title = models.CharField(
         max_length=255
     )
