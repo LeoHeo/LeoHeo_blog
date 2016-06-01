@@ -7,8 +7,12 @@
     
     <p>{{ post_list|length }}개의 데이터가 존재합니다.</p>
 
-    {% if keyword%}
-        <p>{{ keyword }}로 검색된 결과입니다.</p>
+    {% if keyword %}
+        <p>{{ keyword }}로 크롤링된 결과입니다.</p>
+    {% endif %}
+
+    {% if query %}
+        <p>{{ query }}가 포함된 결과 입니다.
     {% endif %}
 
     <ul>
