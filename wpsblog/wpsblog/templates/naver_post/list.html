@@ -3,17 +3,21 @@
 {% block title %}naver crawl list {% endblock %}
 
 {% block content %}
+    <h1> NaverPost</h1>
+    
+    <p>{{ post_list|length }}개의 데이터가 존재합니다.</p>
+
+    {% if keyword%}
+        <p>{{ keyword }}로 검색된 결과입니다.</p>
+    {% endif %}
+
     <ul>
-    {% for blog in blog_list %}
+    {% for blog in post_list %}
         <li style="clear:both; list-style-type:none;">
-            <div style="float:left;">
-                <img src="{{ blog.thumbnail_image_url}}" />
-            </div>
-            <dl>
-                <b>{{ blog.keyword }}</b>
-                <dt><a href="{{ blog.original_url }}" target="_blank">{{ blog.title }}</a></dt>
-                <dd>{{ blog.content }}</dd>
-            </dl>
+            <img src="{{ blog.thumbnail_image_url}}" />
+            <b>{{ blog.keyword }}</b>
+            <a href="{{ blog.original_url }}" target="_blank">{{ blog.title }}</a>
+            <p>{{ blog.content }}</p>
         </li>
     {% endfor %}
     </ul>
