@@ -5,4 +5,8 @@
 {% block content %}
 <h2>{{ detail.title }}</h2>
 <p>{{ detail.content }}</p>
+<ul>
+    <li><a href="/posts/{{ detail.id}}/edit">Edit</a></li>
+    <li><a href="/posts/{{ detail.id}}/delete">Delete</a></li>
+</ul>
 {% endblock %}
