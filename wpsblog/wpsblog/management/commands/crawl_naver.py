@@ -8,10 +8,15 @@ from wpsblog.models import NaverPost
 class Command(BaseCommand):
 
     def add_arguments(self, parser):
-        parser.add_argument('query')
+        parser.add_argument('query', type=str)
 
     def handle(self, *args, **options):
         query = options['query']
+
+        self.stdout.write("네이버에서 {query}크롤링을 진행합니다.".format(
+            query=query
+        ))
+
         result_list = []
 
         url = "https://search.naver.com/search.naver?where=post&sm=tab_jum&ie=utf8&query=" + query
