@@ -14,4 +14,6 @@ def update(request, post_id):
 
     post.save()
 
+    print("11111")
+
     return redirect(post)

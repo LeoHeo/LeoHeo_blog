@@ -18,3 +18,11 @@ class Post(models.Model):
                 "post_id": self.id,
             }
         )
+
+    def get_update_url(self):
+        return reverse(
+            "post:update",
+            kwargs={
+                "post_id": self.id
+            }
+        )
