@@ -3,10 +3,10 @@
 {% block title %}Detail{% endblock %}
 
 {% block content %}
-<h2>{{ detail.title }}</h2>
-<p>{{ detail.content }}</p>
+<h2>{{ post.title }}</h2>
+<p>{{ post.content }}</p>
 <ul>
-    <li><a href="/posts/{{ detail.id}}/edit">Edit</a></li>
-    <li><a href="/posts/{{ detail.id}}/delete">Delete</a></li>
+    <li><a href="{% url "post:edit" post_id=post.id%}">수정</a></li>
+    <li><a href="{% url "post:delete" post_id=post.id%}">삭제</a></li>
 </ul>
 {% endblock %}

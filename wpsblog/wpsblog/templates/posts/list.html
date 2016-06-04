@@ -6,7 +6,7 @@
 <table>
     {% for post in posts_list %}
     <tr>
-        <td><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></td>
+        <td><a href="{% url "post:detail" post_id=post.id%}">{{ post.title }}</a></td>
         <td>{{ post.content }}</td>
     </tr>
     {% endfor %}
