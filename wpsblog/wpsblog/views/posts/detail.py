@@ -3,7 +3,7 @@ from wpsblog.models import Post
 
 
 def detail(request, post_id):
-    post = Post.objects.get(id=post_id) 
+    post = Post.objects.get(id=post_id)
 
     return render(
         request,

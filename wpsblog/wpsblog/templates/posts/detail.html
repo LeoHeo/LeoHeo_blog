@@ -15,4 +15,10 @@
     <li> {{ comment.content }} </li>
     {% endfor %}
 </ul>
+<h2>New Comment</h2>
+<form action="{% url "comment:comment_create" post_id=post.id %}" method="POST">
+    {% csrf_token %}
+    <input type="text" name="content">
+    <input type="submit" value="댓글달기">
+</form>
 {% endblock %}

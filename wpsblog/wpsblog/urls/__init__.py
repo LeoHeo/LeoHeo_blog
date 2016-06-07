@@ -14,4 +14,5 @@ urlpatterns = [
     url(r'^policy/', include("wpsblog.urls.policy", namespace="policy")),
     url(r'^posts/', include("wpsblog.urls.post", namespace="post")),
     url(r'^naver/posts/$', naver_blog_crawler, name="naver-blog-crawler"),
+    url(r'^comments/', include("wpsblog.urls.comments", namespace="comment")),
 ]
