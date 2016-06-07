@@ -9,4 +9,10 @@
     <li><a href="{% url "post:edit" post_id=post.id%}">수정</a></li>
     <li><a href="{% url "post:delete" post_id=post.id%}">삭제</a></li>
 </ul>
+<p>Total Comment: {{ post.comment_set.count }}</p>
+<ul>
+    {% for comment in post.comment_set.all %}
+    <li> {{ comment.content }} </li>
+    {% endfor %}
+</ul>
 {% endblock %}
