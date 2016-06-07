@@ -6,5 +6,7 @@ def list(request):
     return render(
         request,
         "posts/list.html",
-        {"posts_list": Post.objects.all()}
+        {
+            "posts_list": Post.objects.filter(is_public=True),
+        }
     )
