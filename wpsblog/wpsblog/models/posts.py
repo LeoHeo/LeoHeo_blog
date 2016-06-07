@@ -3,11 +3,11 @@ from django.core.urlresolvers import reverse
 
 
 class PostManager(models.Manager):
-    pass
+    def public(self):
+        return self.filter(is_public=True)
 
 
 class Post(models.Model):
-    
     objects = PostManager()
 
     title = models.CharField(
