@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block title%} My page {% endblock %}
+
+{% block content%}
+<h1>My Page</h1>
+<p>{{ request.user.username}}의 마이페이지</p>
+{% endblock %}
