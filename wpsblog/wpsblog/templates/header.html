@@ -6,5 +6,14 @@
         <li><a href="{% url "news" %}">News</a></li>
         <li><a href="{% url "post:list" %}">Post</a></li>
         <li><a href="{% url "post:new" %}">Post New</a></li>
+        
+        {% if request.user.is_authenticated %}
+            <p>{{ request.user.username }} Welcome!! </p>
+            <li><a href="{% url "auth:logout" %}">Logout</a></li>
+        {% else %} 
+            <li><a href="{% url "auth:login" %}">Login</a></li>
+            <li><a href="{% url "auth:signup" %}">SignUp</a></li>
+        {% endif %}
+        
     </ul>
 </header>
