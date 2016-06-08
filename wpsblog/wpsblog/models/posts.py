@@ -2,7 +2,7 @@ import os
 
 from django.db import models
 from django.core.urlresolvers import reverse
-
+from django.contrib.auth.models import User
 from django.conf import settings
 
 
@@ -13,6 +13,8 @@ class PostManager(models.Manager):
 
 class Post(models.Model):
     objects = PostManager()
+
+    user = models.ForeignKey(User)
 
     title = models.CharField(
         max_length=120,
