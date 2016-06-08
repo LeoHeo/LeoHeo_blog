@@ -1,12 +1,14 @@
-<!DOCTYPE html>
+{% load staticfiles %}<!DOCTYPE html>
 <html>
     <head>
         <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="{% static "css/application.css" %}">
     </head>
     <body>
         {% include "header.html"%}
         {% block content%}
         {% endblock%}
         {% include "footer.html"%}
+        <script src="{% static "js/application.js"%}"></script>
     </body>
 </html>

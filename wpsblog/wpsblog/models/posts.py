@@ -1,5 +1,9 @@
+import os
+
 from django.db import models
 from django.core.urlresolvers import reverse
+
+from django.conf import settings
 
 
 class PostManager(models.Manager):
@@ -16,6 +20,10 @@ class Post(models.Model):
     content = models.TextField()
     is_public = models.BooleanField(
         default=True
+    )
+    image = models.ImageField(
+        blank=True,
+        null=True
     )
 
     def __str__(self):

@@ -8,11 +8,14 @@
 <ul>
     <li><a href="{% url "post:edit" post_id=post.id%}">수정</a></li>
     <li><a href="{% url "post:delete" post_id=post.id%}">삭제</a></li>
+    {% if post.image %}
+        <img src="{{ post.image.url }}"/>
+    {% endif %}
 </ul>
 <p>Total Comment: {{ post.comment_set.count }}</p>
 <ul>
     {% for post_comment in post.comment_set.all %}
-    <li id="comment-{{ comment.id }}">
+    <li id="comment-{{ post_comment.id }}">
         {% if post_comment == comment %}
             <form action="{% url "comment:comment-update" post_id=post.id comment_id=comment.id %}" method="POST">
                 {% csrf_token %}

@@ -6,9 +6,11 @@
 <ul>
     {% for post in posts_list %}
     <li>
+    <img src="{% if post.image %} {{ post.image.url }}{% else %}http://placehold.it/350x150{% endif %}" width=350 height=150 alt="{{ post.title }}"/>
         <a href="{% url "post:detail" post_id=post.id%}">
-            {{ post.title }}
-            <span>({{ post.comment_set.count }})<span>
+            <h2>
+                {{ post.title }}<span>({{ post.comment_set.count }})<span>
+            </h2>
         </a>
     </li>
     </li>{{ post.content }}</li>

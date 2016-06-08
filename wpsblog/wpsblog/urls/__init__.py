@@ -1,4 +1,6 @@
+from django.conf import settings
 from django.conf.urls import url, include
+from django.conf.urls.static import static
 from django.contrib import admin
 
 from wpsblog.views import *
@@ -16,3 +18,5 @@ urlpatterns = [
     url(r'^naver/posts/$', naver_blog_crawler, name="naver-blog-crawler"),
     url(r'^comments/', include("wpsblog.urls.comments", namespace="comment")),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
