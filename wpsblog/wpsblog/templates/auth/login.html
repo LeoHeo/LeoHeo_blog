@@ -8,6 +8,7 @@
     {% csrf_token %}
     <input type="text" name="username" required>
     <input type="password" name="password" required>
+    <input type="text" name="next" value="{{ request.GET.next }}">
     <input type="submit" value="Login">
 </form>
 {% endblock %}
