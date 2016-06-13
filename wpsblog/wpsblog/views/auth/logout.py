@@ -1,9 +1,11 @@
 from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
-from django.contrib.auth import logout as auth_logout
+from django.contrib.auth import logout
+from django.views.generic import View
 
 
-def logout(request):
-    auth_logout(request)
+class LogoutView(View):
 
-    return redirect(reverse("home"))
+    def get(self, request, *args, **kwargs):
+        logout(request)
+        return redirect(reverse("home"))
