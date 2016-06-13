@@ -1,23 +1,20 @@
-import math
-
 from django.shortcuts import render
+from django.core.paginator import Paginator
+
 from wpsblog.models import Post
 
 
 def list(request):
-    page = int(request.GET.get('page') or 1)
-    per = int(request.GET.get('per') or 5)
-    pagination = math.ceil(Post.objects.public().count() / per)
+    page = request.GET.get("page", 1)
+    per = request.GET.get("per", 5)
 
-    start = (page * per) - per
-    end = (page * per)
+    paginator = Paginator(Post.objects.public(), per)
+    posts = paginator.page(page)
 
     return render(
         request,
         "posts/list.html",
         {
-            "posts_list": Post.objects.public()[start:end],
-            "page_list": range(1, pagination+1),
-            "per": per,
+            "posts_list": posts,
         }
     )
