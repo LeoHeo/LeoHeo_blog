@@ -7,16 +7,15 @@ def login(request):
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
-        next_url = request.POST.get("next")
+        next_url = request.POST.get("next") or reverse("auth:mypage")
 
         user = authenticate(username=username, password=password)
 
         if user:
             auth_login(request, user)
-            url = next_url if next_url != '' else reverse("home")
-            return redirect(url)
-        else:
-            return redirect(reverse("auth:login"))
+            return redirect(next_url)
+
+        return redirect(reverse("auth:login"))
 
     return render(
         request,
