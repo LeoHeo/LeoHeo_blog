@@ -14,4 +14,14 @@
     </li>
     {% endfor %}
 </ul>
+<h2>내가 쓴 댓글</h2>
+<ul>
+    {% for comment in request.user.comment_set.all %}
+    <li>
+        <a href="{{ comment.get_absoultr_url }}">
+            {{ comment.content }}
+        </a>
+    </li>
+    {% endfor %}    
+</ul>
 {% endblock %}

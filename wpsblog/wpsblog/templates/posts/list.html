@@ -9,11 +9,14 @@
     <img src="{{ post.get_image_url }}" width=350 height=150 alt="{{ post.title }}"/>
         <a href="{% url "post:detail" post_id=post.id%}">
             <h2>
-                {{ post.title }}<span>({{ post.comment_set.count }})<span>
+                <span>{{ post.title }} ({{ post.comment_set.count }})</span>
             </h2>
         </a>
     </li>
-    </li>{{ post.content }}</li>
+    </li><span>{{ post.content }}<span></li>
     {% endfor %}
 </ul>
+{% for i in page_list %}
+    <a href="/posts/?page={{ i }}&per={{ per }}">{{ i }}</a>
+{% endfor %}
 {% endblock %}
