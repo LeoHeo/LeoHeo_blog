@@ -16,6 +16,6 @@ class Comment(models.Model):
         return reverse(
             "post:detail",
             kwargs={
-                "post_id": self.post.id
+                "pk": self.post.id
             }
         ) + "#comment-" + str(self.id)
