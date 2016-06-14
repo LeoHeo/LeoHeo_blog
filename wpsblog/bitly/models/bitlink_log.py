@@ -27,4 +27,4 @@ class BitLinkLog(models.Model):
     create_at = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return self.title
+        return self.bitlink.origin_url
