@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}BitLink{% endblock %}
+
+{% block content %}
+<form action="{% url "bitly:create" %}" method="POST">
+    {% csrf_token %}
+    <input type="origin_url" name="origin_url" placeholder="http://www.naver.com" required>
+    <input type="submit" value="Shorten">
+</form>
+{% endblock %}

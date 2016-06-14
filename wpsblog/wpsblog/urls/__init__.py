@@ -18,4 +18,5 @@ urlpatterns = [
     url(r'^naver/posts/$', naver_blog_crawler, name="naver-blog-crawler"),
     url(r'^comments/', include("wpsblog.urls.comments", namespace="comment")),
     url(r'^', include("wpsblog.urls.auth", namespace="auth")),
+    url(r'^bitly/', include("wpsblog.urls.bitly", namespace="bitly")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
