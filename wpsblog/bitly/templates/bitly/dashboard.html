@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}DashBoard{% endblock %}
+
+{% block content %}
+<h2>Log</h2>
+<ul>
+    {% for log in bitlink.bitlinklog_set.all %}
+    <li>
+        <p>Referer : {{ log.http_referer }}</p>
+        <p>User-Agent: {{ log.http_user_agent }}</p>
+        <p>IP: {{ log.http_remote_address }}</p>
+        <p>Time: {{ log.create_at }}</p>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
