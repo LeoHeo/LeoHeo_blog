@@ -6,8 +6,8 @@
 <h2>{{ post.title }}</h2>
 <p>{{ post.content }}</p>
 <ul>
-    <li><a href="{% url "post:edit" post_id=post.id%}">수정</a></li>
-    <li><a href="{% url "post:delete" post_id=post.id%}">삭제</a></li>
+    <li><a href="{% url "post:update" pk=post.id%}">수정</a></li>
+    <li><a href="{% url "post:delete" pk=post.id%}">삭제</a></li>
     {% if post.image %}
         <img src="{{ post.image.url }}"/>
     {% endif %}
@@ -31,7 +31,7 @@
     {% endfor %}
 </ul>
 <h2>New Comment</h2>
-<form action="{% url "comment:comment-create" post_id=post.id %}" method="POST">
+<form action="{% url "comment:create" post_id=post.id %}" method="POST">
     {% csrf_token %}
     <input type="text" name="content">
     <input type="submit" value="댓글달기">

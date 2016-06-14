@@ -4,5 +4,9 @@
 
 {% block content %}
     <h1>Post Edit</h1>
-    {% include "posts/form.html" with action=post.get_update_url %}   
+    <form action="" method="POST" enctype="mulipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Update">
+    </form>
 {% endblock %}

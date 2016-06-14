@@ -1,19 +1,9 @@
-from django.shortcuts import redirect
+from django.views.generic.edit import UpdateView
+from django.core.urlresolvers import reverse
 
-from wpsblog.models import Post
+from .base import PostBaseView
 
 
-def update(request, post_id):
-    post = Post.objects.get(id=post_id)
-
-    title = request.POST.get('title')
-    content = request.POST.get('content')
-
-    post.title = title
-    post.content = content
-
-    post.save()
-
-    print("11111")
-
-    return redirect(post)
+class PostUpdateView(PostBaseView, UpdateView):
+    fields = ["title", "content", "image"]
+    template_name = "posts/edit.html"

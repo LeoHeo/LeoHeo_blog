@@ -1,7 +1,8 @@
-from django.views.generic.detail import DetailView
+from django.views.generic import DetailView
 
-from .base import PostBaseView
+from wpsblog.models import Post
 
 
-class PostDetailView(PostBaseView, DetailView):
+class PostDetailView(DetailView):
+    model = Post
     template_name = "posts/detail.html"

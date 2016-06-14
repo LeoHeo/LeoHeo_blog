@@ -1,13 +1,12 @@
-from django.shortcuts import redirect
-from django.core.urlresolvers import reverse
+from django.views.generic.edit import DeleteView
+from django.core.urlresolvers import reverse_lazy
 
-from wpsblog.models import Post
+from .base import PostBaseView
 
 
-def delete(request, post_id):
-    post = Post.objects.get(id=post_id)
-    post.delete()
+class PostDeleteView(PostBaseView, DeleteView):
+    template_name = "posts/list.html"
+    success_url = reverse_lazy("post:list")
 
-    return redirect(
-        reverse("post:list")
-    )
+    def get(self, request, *args, **kwargs):
+        return self.delete(request, *args, **kwargs)

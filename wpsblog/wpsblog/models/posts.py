@@ -4,6 +4,7 @@ from django.db import models
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.conf import settings
+from django.forms import ModelForm
 
 
 class PostManager(models.Manager):
@@ -43,7 +44,7 @@ class Post(models.Model):
         return reverse(
             "post:update",
             kwargs={
-                "post_id": self.id
+                "pk": self.id
             }
         )
 
