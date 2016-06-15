@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 
 
 class BitLink(models.Model):
+
     user = models.ForeignKey(User)
 
     origin_url = models.URLField()

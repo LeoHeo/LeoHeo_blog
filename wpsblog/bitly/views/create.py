@@ -1,7 +1,7 @@
 from django.views.generic.edit import CreateView
 from hashids import Hashids
+
 from .base import BitLinkBaseView
-import random
 
 
 class BitLinkCreateView(BitLinkBaseView, CreateView):
@@ -12,8 +12,9 @@ class BitLinkCreateView(BitLinkBaseView, CreateView):
         hashids = Hashids(salt="bitlink", min_length=4)
 
         form.instance.user = self.request.user
+        bitlink = form.save()
         form.instance.shorten_hash = hashids.encode(
-            random.randint(1, 1000)
+            bitlink.id
         )
 
         return super(BitLinkCreateView, self).form_valid(form)
