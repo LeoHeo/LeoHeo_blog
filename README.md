@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/LeoHeo/LeoHeo_blog.svg?branch=master)](https://travis-ci.org/LeoHeo/LeoHeo_blog)
+
 # 패스트 블로그
 
 패스트 캠퍼스 웹 프로그래밍 스쿨 SCHOOL 2기 첫번째 백엔드 프로젝트
