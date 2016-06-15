@@ -1,13 +1,14 @@
 from django.views.generic.base import RedirectView
-
+from django.shortcuts import get_object_or_404
 from bitly.models import BitLinkLog
 
 
 class BitLinkRedirectView(RedirectView):
 
     def get_redirect_url(self, *args, **kwargs):
-        bitlink = self.request.user.bitlink_set.get(
-            shorten_hash=self.kwargs.get('shorten_hash')
+        bitlink = get_object_or_404(
+            self.request.user.bitlink_set,
+            shorten_hash=self.kwargs.get("shorten_hash")
         )
 
         bitlink_log = bitlink.bitlinklog_set.create(
