@@ -1,6 +1,8 @@
 from django.db import models
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from hashids import Hashids
 
 
 class BitLink(models.Model):
@@ -21,3 +23,12 @@ class BitLink(models.Model):
 
     def get_absolute_url(self):
         return reverse("home")
+
+
+def post_save_bitlink(sender, instance, created, **kwargs):
+    if created:
+        hash_ids = Hashids(salt="bitlink", min_length=4)
+        instance.shorten_hash = hash_ids.encode(instance.id)
+        instance.save()
+
+post_save.connect(post_save_bitlink, sender=BitLink)
