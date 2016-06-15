@@ -4,9 +4,9 @@ python:
     - "3.4"
     - "3.5"
 install: 
-    "pip install -r requirements/development.txt"
+    - pip install -r requirements/development.txt
 script: 
-    pep8 wpsblog/
-    python wpsblog/manage.py test wpsblog bitly
+    - pep8 .
+    - python wpsblog/manage.py test wpsblog bitly
 notifications:
-  slack: notificationslack-hjh:3rcW0o49koUN1jOkq1YIjkaB
+    slack: notificationslack-hjh:3rcW0o49koUN1jOkq1YIjkaB
