@@ -28,6 +28,7 @@ INSTALLED_APPS = [
 
     'wpsblog',
     'bitly',
+    'users',
 ]
 
 MIDDLEWARE_CLASSES = [
