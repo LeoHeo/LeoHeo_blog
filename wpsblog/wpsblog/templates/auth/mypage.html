@@ -5,6 +5,11 @@
 {% block content%}
 <h1>My Page</h1>
 <p>{{ request.user.username}}의 마이페이지</p>
+<ul>
+    <li>phonenumber: {{ request.user.userprofile.phonenumber }}</li>
+    <li>address: {{ request.user.userprofile.address }}</li> 
+</ul>
+
 
 <h2>내가 만든 BitLink({{ request.user.bitlink_set.count }})</h2>
 <ul>
